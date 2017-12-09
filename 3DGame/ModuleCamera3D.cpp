@@ -127,7 +127,7 @@ void ModuleCamera3D::LookAt( const vec3 &Spot)
 	Reference = Spot;
 
 	Z = normalize(Position - Reference);
-	X = normalize(cross(vec3(0.0f, 0.1f, 0.0f), Z));
+	X = normalize(cross(vec3(0.0f, 1.0f, 0.0f), Z));
 	Y = cross(Z, X);
 
 	CalculateViewMatrix();
