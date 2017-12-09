@@ -153,12 +153,15 @@ update_status ModulePlayer::Update(float dt)
 	App->window->SetTitle(title);
 	vehicle->GetTransform(&matrix);
 	position = matrix.translation();
-	position.y += vehicle->info.chassis_size.y+2;
-	position.z += -vehicle->info.chassis_size.z-10;
-	App->camera->LookAt({ position.x,position.y,position.z});
+	cameraPos = position;
+	cameraPos.y += vehicle->info.chassis_size.y+2;
+	cameraPos.z += -vehicle->info.chassis_size.z-10;
+	//App->camera->LookAt({ position.x,position.y,position.z});
 	//App->camera->Position.Set(position.x, 10, position.z-15);
 	speed = vehicle->GetKmh();
-	App->camera->Position = position;
+	App->camera->Position = cameraPos;
+	App->camera->Look(cameraPos, position,true);
+	App->camera->X = rotate(cameraPos, turn, vec3(0.0f, 1.0f, 0.0f));
 
 	return UPDATE_CONTINUE;
 }
