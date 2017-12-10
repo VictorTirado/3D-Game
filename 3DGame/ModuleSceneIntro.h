@@ -20,8 +20,10 @@ public:
 	bool CleanUp();
 
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
-
+	
 public:
 	Cube s;
+	Cube c1;
 	PhysBody3D* sensor;
+	PhysBody3D* cube1;
 };

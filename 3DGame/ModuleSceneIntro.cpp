@@ -3,6 +3,8 @@
 #include "ModuleSceneIntro.h"
 #include "Primitive.h"
 #include "PhysBody3D.h"
+#include "ModulePhysics3D.h"
+#include "Color.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -19,14 +21,17 @@ bool ModuleSceneIntro::Start()
 
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
-
+	
 	s.size = vec3(5, 3, 1);
 	s.SetPos(0, 2.5f, 20);
+	c1=App->physics->AddCube(3, 5, 10, 0, 2.5, 10,Red);
+	
 
 	sensor = App->physics->AddBody(s, 0.0f);
 	sensor->SetAsSensor(true);
 	sensor->collision_listeners.add(this);
 
+	
 	return ret;
 }
 
@@ -45,9 +50,9 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Render();
 
-	sensor->GetTransform(&s.transform);
+	//sensor->GetTransform(&s.transform);
 	s.Render();
-
+	c1.Render();
 	return UPDATE_CONTINUE;
 }
 
