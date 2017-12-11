@@ -330,7 +330,7 @@ PhysVehicle3D* ModulePhysics3D::AddVehicle(const VehicleInfo& info)
 }
 
 
-Cube ModulePhysics3D::AddCube(int x, int y, int z, int PosX, int PosY, int PosZ,Color color)
+Cube ModulePhysics3D::AddCube(float x, float y, float z, float PosX, float PosY, float PosZ,float mass,Color color)
 {
 	Cube c;
 	c.size.x = x;
@@ -338,9 +338,37 @@ Cube ModulePhysics3D::AddCube(int x, int y, int z, int PosX, int PosY, int PosZ,
 	c.size.z = z;
 	c.SetPos(PosX, PosY, PosZ);
 	c.color = color;
+	float mass2 = mass;
 
-
+	AddBody(c,mass2);
 	return c;
+}
+Cube ModulePhysics3D::AddCubeRot(float x, float y, float z, float PosX, float PosY, float PosZ, float mass, Color color, int angle)
+{
+	Cube c;
+	c.size.x = x;
+	c.size.y = y;
+	c.size.z = z;
+	c.SetPos(PosX, PosY, PosZ);
+	c.color = color;
+	float mass2 = mass;
+	c.SetRotation(angle, vec3(0, 1, 0));
+	AddBody(c, mass2);
+	return c;
+}
+
+Cylinder ModulePhysics3D::AddCylinder(float radius, float height, float PosX, float PosY, float PosZ, float mass,Color color)
+{
+	Cylinder cyl;
+	cyl.radius = radius;
+	cyl.height = height;
+	cyl.SetPos(PosX, PosY, PosZ);
+	cyl.color = color;
+	cyl.SetRotation(90,vec3(0,0,1));
+	float mass3 = mass;
+
+	AddBody(cyl, mass3);
+	return cyl;
 }
 
 
