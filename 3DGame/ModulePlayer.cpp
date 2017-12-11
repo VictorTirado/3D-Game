@@ -122,14 +122,22 @@ update_status ModulePlayer::Update(float dt)
 
 	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
-		if(turn < TURN_DEGREES)
-			turn +=  TURN_DEGREES;
+		if (turn < TURN_DEGREES) {
+			turn += TURN_DEGREES;
+			App->camera->X = rotate(App->camera->X, turn, vec3(0.0f, 1.0f, 0.0f));
+			App->camera->Y = rotate(App->camera->Y, turn, vec3(0.0f, 1.0f, 0.0f));
+			App->camera->Z = rotate(App->camera->Z, turn, vec3(0.0f, 1.0f, 0.0f));
+		}
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
-		if(turn > -TURN_DEGREES)
+		if (turn > -TURN_DEGREES) {
 			turn -= TURN_DEGREES;
+			App->camera->X = rotate(App->camera->X, turn, vec3(0.0f, 1.0f, 0.0f));
+			App->camera->Y = rotate(App->camera->Y, turn, vec3(0.0f, 1.0f, 0.0f));
+			App->camera->Z = rotate(App->camera->Z, turn, vec3(0.0f, 1.0f, 0.0f));
+		}
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
