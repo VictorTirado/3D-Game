@@ -35,6 +35,12 @@ public:
 	Cube c10;
 	Cube c11;
 	Cube c12;
+	Cube c13;
+	Cube c14;
+	Cube c15;
+	Cube c16;
+	Cube c17;
+	Cube c18;
 	Cylinder cyl;
 
 

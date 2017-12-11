@@ -343,7 +343,7 @@ Cube ModulePhysics3D::AddCube(float x, float y, float z, float PosX, float PosY,
 	AddBody(c,mass2);
 	return c;
 }
-Cube ModulePhysics3D::AddCubeRot(float x, float y, float z, float PosX, float PosY, float PosZ, float mass, Color color, int angle)
+Cube ModulePhysics3D::AddCubeRotY(float x, float y, float z, float PosX, float PosY, float PosZ, float mass, Color color, int angle)
 {
 	Cube c;
 	c.size.x = x;
@@ -353,6 +353,20 @@ Cube ModulePhysics3D::AddCubeRot(float x, float y, float z, float PosX, float Po
 	c.color = color;
 	float mass2 = mass;
 	c.SetRotation(angle, vec3(0, 1, 0));
+	AddBody(c, mass2);
+	return c;
+}
+
+Cube ModulePhysics3D::AddCubeRotX(float x, float y, float z, float PosX, float PosY, float PosZ, float mass, Color color, int angle)
+{
+	Cube c;
+	c.size.x = x;
+	c.size.y = y;
+	c.size.z = z;
+	c.SetPos(PosX, PosY, PosZ);
+	c.color = color;
+	float mass2 = mass;
+	c.SetRotation(angle, vec3(1, 0, 0));
 	AddBody(c, mass2);
 	return c;
 }

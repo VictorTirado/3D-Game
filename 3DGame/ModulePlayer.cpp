@@ -97,7 +97,7 @@ bool ModulePlayer::Start()
 	car.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car);
-	vehicle->SetPos(5, 3, 80);
+	vehicle->SetPos(0, 4,0);
 	
 	return true;
 }
