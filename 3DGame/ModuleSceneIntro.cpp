@@ -107,5 +107,6 @@ update_status ModuleSceneIntro::Update(float dt)
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	LOG("1/3");
+	laps=laps+1;
 }
 

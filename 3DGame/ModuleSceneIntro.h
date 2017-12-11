@@ -22,6 +22,10 @@ public:
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
 	
 public:
+	int laps = 1;
+
+
+
 	Cube s;
 	Cube c1;
 	Cube c2;
