@@ -167,7 +167,7 @@ update_status ModulePlayer::Update(float dt)
 	//App->camera->LookAt({ position.x,position.y,position.z});
 	//App->camera->Position.Set(position.x, 10, position.z-15);
 	speed = vehicle->GetKmh();
-	App->camera->Position = cameraPos;
+	//App->camera->Position = cameraPos;
 	App->camera->Look(cameraPos, position,true);
 	//App->camera->X = rotate(App->camera->X, turn, vec3(0.0f, 1.0f, 0.0f));
 	//App->camera->Y = rotate(App->camera->Y, turn, vec3(0.0f, 1.0f, 0.0f));
