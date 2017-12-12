@@ -17,16 +17,22 @@ public:
 	void LookAt(const vec3 &Spot);
 	void Move(const vec3 &Movement);
 	float* GetViewMatrix();
+	void Follow(PhysBody3D* body, float min, float max, float height);
 
 private:
 
 	void CalculateViewMatrix();
 
 public:
-	
+
 	vec3 X, Y, Z, Position, Reference;
 
 private:
 
 	mat4x4 ViewMatrix, ViewMatrixInverse;
+
+	PhysBody3D* following;
+	float min_following_dist;
+	float max_following_dist;
+	float following_height;
 };

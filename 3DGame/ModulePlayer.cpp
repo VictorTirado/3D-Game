@@ -98,6 +98,8 @@ bool ModulePlayer::Start()
 
 	vehicle = App->physics->AddVehicle(car);
 	vehicle->SetPos(0, 4,0);
+
+	App->camera->Follow(vehicle, 10, 10, 1.f);
 	
 	return true;
 }
@@ -113,6 +115,7 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update(float dt)
 {
+
 	turn = acceleration = brake = 0.0f;
 
 	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
@@ -124,9 +127,6 @@ update_status ModulePlayer::Update(float dt)
 	{
 		if (turn < TURN_DEGREES) {
 			turn += TURN_DEGREES;
-			App->camera->X = rotate(App->camera->X, turn, vec3(0.0f, 1.0f, 0.0f));
-			App->camera->Y = rotate(App->camera->Y, turn, vec3(0.0f, 1.0f, 0.0f));
-			App->camera->Z = rotate(App->camera->Z, turn, vec3(0.0f, 1.0f, 0.0f));
 		}
 	}
 
@@ -134,9 +134,6 @@ update_status ModulePlayer::Update(float dt)
 	{
 		if (turn > -TURN_DEGREES) {
 			turn -= TURN_DEGREES;
-			App->camera->X = rotate(App->camera->X, turn, vec3(0.0f, 1.0f, 0.0f));
-			App->camera->Y = rotate(App->camera->Y, turn, vec3(0.0f, 1.0f, 0.0f));
-			App->camera->Z = rotate(App->camera->Z, turn, vec3(0.0f, 1.0f, 0.0f));
 		}
 	}
 
@@ -161,17 +158,7 @@ update_status ModulePlayer::Update(float dt)
 	App->window->SetTitle(title);
 	vehicle->GetTransform(&matrix);
 	position = matrix.translation();
-	cameraPos = position;
-	cameraPos.y += vehicle->info.chassis_size.y+2;
-	cameraPos.z += -vehicle->info.chassis_size.z-10;
-	//App->camera->LookAt({ position.x,position.y,position.z});
-	//App->camera->Position.Set(position.x, 10, position.z-15);
 	speed = vehicle->GetKmh();
-	//App->camera->Position = cameraPos;
-	App->camera->Look(cameraPos, position,true);
-	//App->camera->X = rotate(App->camera->X, turn, vec3(0.0f, 1.0f, 0.0f));
-	//App->camera->Y = rotate(App->camera->Y, turn, vec3(0.0f, 1.0f, 0.0f));
-	//App->camera->Z = rotate(App->camera->Z, turn, vec3(0.0f, 1.0f, 0.0f));
 
 	return UPDATE_CONTINUE;
 }

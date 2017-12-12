@@ -27,6 +27,5 @@ public:
 	float brake;
 	mat4x4 matrix;
 	vec3 position;
-	vec3 cameraPos;
 	float speed;
 };
