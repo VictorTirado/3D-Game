@@ -61,7 +61,14 @@ bool ModuleSceneIntro::Start()
 	c13 = App->physics->AddCube(60, 3, 15, 13.5, 3, 138, 0.0f, Sand);
 	c17 = App->physics->AddCube(15, 3, 10, -15, 3, -20, 0.0f, Brown);
 	c14 = App->physics->AddCubeRotY(15, 3, 25, -13.5, 3, 130.5, 0.0f, Sand, 45);
-	c19 = App->physics->AddCubeRotY(15, 3, 45, -30.5, 3, 100.5, 0.0f, Sand, 45);
+	c19 = App->physics->AddCubeRotY(15, 3,25, -30.5, 3, 113.5, 0.0f, Sand, 45);
+	//c20 = App->physics->AddCubeRotY(3, 15, 25, -21.5, 5, 113.5, 0.0f, Sand, 45);
+//	c21 = App->physics->AddCubeRotY(3, 15, 25, -35, 5, 130.5, 0.0f, Sand, 45);
+	//c22 = App->physics->AddCubeRotY(15, 3, 25, -30.5, 13.5, 113.5, 0.0f, Sand, 45);
+	c23 = App->physics->AddCubeRotY(15, 3, 25, -47.5, 3, 96.5, 0.0f, Sand, 45);
+	c24 = App->physics->AddCubeRotY(15, 3, 50, -71.5, 2.999, 111.5, 0.0f, Sand, 130);
+	c25 = App->physics->AddCubeRotX(15, 3, 20, -85.5, 3, 127.5, 0.0f, Sand,-15);
+
 
 
 
@@ -119,6 +126,12 @@ update_status ModuleSceneIntro::Update(float dt)
 	c17.Render();
 	c18.Render();
 	c19.Render();
+	c20.Render();
+	c21.Render();
+	c22.Render();
+	c23.Render();
+	c24.Render();
+	c25.Render();
 
 
 
