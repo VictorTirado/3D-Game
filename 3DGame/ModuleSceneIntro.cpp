@@ -62,15 +62,24 @@ bool ModuleSceneIntro::Start()
 	c17 = App->physics->AddCube(15, 3, 10, -15, 3, -20, 0.0f, Brown);
 	c14 = App->physics->AddCubeRotY(15, 3, 25, -13.5, 3, 130.5, 0.0f, Sand, 45);
 	c19 = App->physics->AddCubeRotY(15, 3,25, -30.5, 3, 113.5, 0.0f, Sand, 45);
-	//c20 = App->physics->AddCubeRotY(3, 15, 25, -21.5, 5, 113.5, 0.0f, Sand, 45);
-//	c21 = App->physics->AddCubeRotY(3, 15, 25, -35, 5, 130.5, 0.0f, Sand, 45);
+	c20 = App->physics->AddCubeRotY(30, 3, 10, -37.5, 3, -20, 0.0f, Sand, 0);
+	//c21 = App->physics->AddCubeRotY(3, 15, 25, -35, 5, 130.5, 0.0f, Sand, 45);
 	//c22 = App->physics->AddCubeRotY(15, 3, 25, -30.5, 13.5, 113.5, 0.0f, Sand, 45);
 	c23 = App->physics->AddCubeRotY(15, 3, 25, -47.5, 3, 96.5, 0.0f, Sand, 45);
 	c24 = App->physics->AddCubeRotY(15, 3, 50, -71.5, 2.999, 111.5, 0.0f, Sand, 130);
 	c25 = App->physics->AddCubeRotX(15, 3, 20, -85.5, 3, 127.5, 0.0f, Sand,-15);
-
-
-
+	c26 = App->physics->AddCubeRotX(40, 3.0001, 50, -85.5, 3, 190.5, 0.0f, Sand, 0);
+	c27 = App->physics->AddCubeRotX(50, 3, 20, -125.5, 3, 205.5, 0.0f, Sand, 0);
+	c28 = App->physics->AddCubeRotY(50, 3, 20, -150.5, 3, 190.5, 0.0f, Sand, -45);
+	c29 = App->physics->AddCubeRotY(15, 3, 60, -168.5, 3, 150.5, 0.0f, Sand, 0);
+	c30 = App->physics->AddCubeRotY(15, 3, 60, -168.5, 3, 90.5, 0.0f, Sand, 0);
+	c31 = App->physics->AddCubeRotY(1, 10, 60, -176.5, 9, 90.5, 0.0f, Sand, 0);
+	c32 = App->physics->AddCubeRotY(1, 10, 60, -160.5, 9, 90.5, 0.0f, Sand, 0);
+	c33 = App->physics->AddCubeRotY(17, 1, 60, -168.5, 14, 90.5, 0.0f, Sand, 0);
+	c34 = App->physics->AddCubeRotY(15, 3, 30, -168.5, 3, 45.5, 0.0f, Sand, 0);
+	c35 = App->physics->AddCubeRotY(15, 3, 15, -153.5, 2.999, 38.5, 0.0f, Sand, 0);
+	c36 = App->physics->AddCubeRotY(15, 3, 30, -153.5, 2.998, 20.5, 0.0f, Sand, 0);
+	c37 = App->physics->AddCubeRotY(15, 3, 15, -140.5, 2.999, 13.5, 0.0f, Sand, 0);
 
 	//SENSORS
 	s.size = vec3(15, 3, 1);
@@ -132,6 +141,18 @@ update_status ModuleSceneIntro::Update(float dt)
 	c23.Render();
 	c24.Render();
 	c25.Render();
+	c26.Render();
+	c27.Render();
+	c28.Render();
+	c29.Render();
+	c30.Render();
+	c31.Render();
+	c32.Render();
+	c33.Render();
+	c34.Render();
+	c35.Render();
+	c36.Render();
+	c37.Render();
 
 
 
