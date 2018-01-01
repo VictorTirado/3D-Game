@@ -30,6 +30,8 @@ bool ModuleSceneIntro::Start()
 		{ 50, 0.5f, 10, 0, 0, 0, 0.0f, Blue, NONE, 0.f },
 
 	};
+	
+	
 
 	LOG("Loading Intro assets");
 	bool ret = true;
@@ -50,21 +52,22 @@ bool ModuleSceneIntro::Start()
 	c5 = App->physics->AddCube(2, 2, 2, 5, 4.5, 3, 0.0f, Brown);
 	//cyl = App->physics->AddCylinder(3, 1, 0, 3, 30, 0.0f,Red);
 	//SAND
-	c8 = App->physics->AddCube(15, 3, 10, 0, 3, -10, 0.0f, Sand);
+	c8 = App->physics->AddCube(15, 3, 10, 0, 3.001, -10, 0.0f, Sand);
 	c15 = App->physics->AddCube(35, 3, 10, 10, 3, -20, 0.0f, Sand);
 	c16 = App->physics->AddCubeRotX(15, 3, 20, 20, 4, -30, 0.0f, Sand, 30);
-	c6 = App->physics->AddCube(15, 3, 30, 0, 3, 20, 0.0f, Sand);
+	c21 = App->physics->AddCubeRotY(30, 3, 30, 10, 8.75, -53, 0.0f, Sand, 0);
+	c22 = App->physics->AddCubeRotX(15, 3, 20, 2.5, 8.75, -35, 0.0f, Sand, -20);
+	c6 = App->physics->AddCube(15, 3, 30, 0, 3.001, 20, 0.0f, Sand);
 	c7 = App->physics->AddCube(15, 3, 30, 0, 3, 50, 0.0f, Sand);
-	c10 = App->physics->AddCubeRotY(15, 3, 30, 12.5, 3, 80, 0.0f, Sand, 45);
+	c10 = App->physics->AddCubeRotY(15, 3, 30, 12.5, 3.001, 80, 0.0f, Sand, 45);
 	c11 = App->physics->AddCubeRotY(15, 3, 25, 30, 3, 97.5, 0.0f, Sand, 45);
-	c12 = App->physics->AddCube(15, 3, 30, 36, 3, 115.5, 0.0f, Sand);
+	c12 = App->physics->AddCube(15, 3, 30, 36, 3.001, 115.5, 0.0f, Sand);
 	c13 = App->physics->AddCube(60, 3, 15, 13.5, 3, 138, 0.0f, Sand);
-	c17 = App->physics->AddCube(15, 3, 10, -15, 3, -20, 0.0f, Brown);
+	c17 = App->physics->AddCube(15, 3, 10, -15, 3.001, -20, 0.0f, Brown);
 	c14 = App->physics->AddCubeRotY(15, 3, 25, -13.5, 3, 130.5, 0.0f, Sand, 45);
 	c19 = App->physics->AddCubeRotY(15, 3,25, -30.5, 3, 113.5, 0.0f, Sand, 45);
 	c20 = App->physics->AddCubeRotY(30, 3, 10, -37.5, 3, -20, 0.0f, Sand, 0);
-	//c21 = App->physics->AddCubeRotY(3, 15, 25, -35, 5, 130.5, 0.0f, Sand, 45);
-	//c22 = App->physics->AddCubeRotY(15, 3, 25, -30.5, 13.5, 113.5, 0.0f, Sand, 45);
+	
 	c23 = App->physics->AddCubeRotY(15, 3, 25, -47.5, 3, 96.5, 0.0f, Sand, 45);
 	c24 = App->physics->AddCubeRotY(15, 3, 50, -71.5, 2.999, 111.5, 0.0f, Sand, 130);
 	c25 = App->physics->AddCubeRotX(15, 3, 20, -85.5, 3, 127.5, 0.0f, Sand,-15);
@@ -73,9 +76,9 @@ bool ModuleSceneIntro::Start()
 	c28 = App->physics->AddCubeRotY(50, 3, 20, -150.5, 3, 190.5, 0.0f, Sand, -45);
 	c29 = App->physics->AddCubeRotY(15, 3, 60, -168.5, 3, 150.5, 0.0f, Sand, 0);
 	c30 = App->physics->AddCubeRotY(15, 3, 60, -168.5, 3, 90.5, 0.0f, Sand, 0);
-	c31 = App->physics->AddCubeRotY(1, 10, 60, -176.5, 9, 90.5, 0.0f, Sand, 0);
-	c32 = App->physics->AddCubeRotY(1, 10, 60, -160.5, 9, 90.5, 0.0f, Sand, 0);
-	c33 = App->physics->AddCubeRotY(17, 1, 60, -168.5, 14, 90.5, 0.0f, Sand, 0);
+	c31 = App->physics->AddCubeRotY(1, 10, 60, -176.5, 9, 90.5, 0.0f, Black, 0);
+	c32 = App->physics->AddCubeRotY(1, 10, 60, -160.5, 9, 90.5, 0.0f, Black, 0);
+	c33 = App->physics->AddCubeRotY(17, 1, 60, -168.5, 14, 90.5, 0.0f, Black, 0);
 	c34 = App->physics->AddCubeRotY(15, 3, 30, -168.5, 3, 45.5, 0.0f, Sand, 0);
 	c35 = App->physics->AddCubeRotY(15, 3, 15, -153.5, 2.999, 38.5, 0.0f, Sand, 0);
 	c36 = App->physics->AddCubeRotY(15, 3, 30, -153.5, 2.998, 20.5, 0.0f, Sand, 0);
@@ -87,6 +90,19 @@ bool ModuleSceneIntro::Start()
 	sensor = App->physics->AddBody(s, 0.0f);
 	sensor->SetAsSensor(true);
 	sensor->collision_listeners.add(this);
+
+	s2.size = vec3(15, 3, 1);
+	s2.SetPos(-85, 8, 130);
+	sensor2 = App->physics->AddBody(s2, 0.0f);
+	sensor2->SetAsSensor(true);
+	sensor2->collision_listeners.add(this);
+
+	s3.size = vec3(15, 3, 1);
+	s3.SetPos(-168.5, 7, 90.5);
+	sensor2 = App->physics->AddBody(s3, 0.0f);
+	sensor2->SetAsSensor(true);
+	sensor2->collision_listeners.add(this);
+
 
 
 
@@ -115,6 +131,8 @@ update_status ModuleSceneIntro::Update(float dt)
 	//sensor->GetTransform(&s.transform);
 	//SENSORS
 	s.Render();
+	s2.Render();
+	s3.Render();
 	//MAP
 	c9.Render();
 	c1.Render();

@@ -27,6 +27,9 @@ public:
 
 
 	Cube s;
+	Cube s2;
+	Cube s3;
+
 	Cube c1;
 	Cube c2;
 	Cube c3;
@@ -64,9 +67,11 @@ public:
 	Cube c35;
 	Cube c36;
 	Cube c37;
+	
 	Cylinder cyl;
 
 
 	PhysBody3D* sensor;
+	PhysBody3D* sensor2;
 	PhysBody3D* cube1;
 };
