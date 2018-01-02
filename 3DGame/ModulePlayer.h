@@ -28,4 +28,6 @@ public:
 	mat4x4 matrix;
 	vec3 position;
 	float speed;
+	Timer startup_time;
+	
 };

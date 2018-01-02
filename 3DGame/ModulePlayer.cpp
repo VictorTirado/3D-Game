@@ -152,9 +152,9 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Brake(brake);
 
 	vehicle->Render();
-
+	float seconds_since_startup = startup_time.Read();
 	char title[80];
-	sprintf_s(title, "%.1f Km/h     %i/3 facings", vehicle->GetKmh(), App->scene_intro->laps);
+	sprintf_s(title, "%.1f Km/h     %i/3 facings Time since startup: %3.f", vehicle->GetKmh(), App->scene_intro->laps, seconds_since_startup);
 	App->window->SetTitle(title);
 	vehicle->GetTransform(&matrix);
 	position = matrix.translation();
