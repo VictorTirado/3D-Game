@@ -213,7 +213,15 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	if (body1 == groundSensor || body2 == groundSensor) {
 		App->player->acceleration = 0;
 		App->player->brake = BRAKE_POWER;
-		App->player->changePos({0,5,0});
+		if (checkPoint1 == true && checkPoint2 == false && checkPoint3 == false || checkPoint1 == false && checkPoint2 == false && checkPoint3 == false) {
+			App->player->changePos({ 0,5,0 });
+		}
+		if (checkPoint1 == true && checkPoint2 == true && checkPoint3 == false) {
+			App->player->changePos({ -82,8,115 });
+		}
+		if (checkPoint1 == true && checkPoint2 == true && checkPoint3 == true) {
+			App->player->changePos({ 0,5,0 });
+		}
 	}
 }
 

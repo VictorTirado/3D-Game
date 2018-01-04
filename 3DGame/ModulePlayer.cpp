@@ -165,7 +165,12 @@ update_status ModulePlayer::Update(float dt)
 
 void ModulePlayer::changePos(vec3 pos) {
 	vehicle->SetPos(pos.x, pos.y, pos.z);
-	vehicle->SetTransform(&originalMatrix);
+	mat4x4 newTransform = originalMatrix;
+	newTransform.translation() = pos;
+	newTransform.M[12] = pos.x;
+	newTransform.M[13] = pos.y;
+	newTransform.M[14] = pos.z;
+	vehicle->SetTransform(&newTransform);
 }
 
 
