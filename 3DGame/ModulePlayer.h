@@ -26,10 +26,10 @@ public:
 	float acceleration;
 	float brake;
 	mat4x4 matrix;
+	mat4x4 originalMatrix;
 	vec3 position;
 	float speed;
 	Timer startup_time;
 
 	void changePos(vec3 pos);
-	
 };

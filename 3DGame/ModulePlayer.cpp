@@ -98,7 +98,7 @@ bool ModulePlayer::Start()
 
 	vehicle = App->physics->AddVehicle(car);
 	vehicle->SetPos(0,3,0);
-
+	vehicle->GetTransform(&originalMatrix);
 	App->camera->Follow(vehicle, 10, 10, 1.f);
 	
 	return true;
@@ -165,6 +165,7 @@ update_status ModulePlayer::Update(float dt)
 
 void ModulePlayer::changePos(vec3 pos) {
 	vehicle->SetPos(pos.x, pos.y, pos.z);
+	vehicle->SetTransform(&originalMatrix);
 }
 
 
