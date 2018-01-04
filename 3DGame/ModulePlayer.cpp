@@ -163,5 +163,9 @@ update_status ModulePlayer::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
+void ModulePlayer::changePos(vec3 pos) {
+	vehicle->SetPos(pos.x, pos.y, pos.z);
+}
+
 
 

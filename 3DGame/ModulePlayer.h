@@ -29,5 +29,7 @@ public:
 	vec3 position;
 	float speed;
 	Timer startup_time;
+
+	void changePos(vec3 pos);
 	
 };

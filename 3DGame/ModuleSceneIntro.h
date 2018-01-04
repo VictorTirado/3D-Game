@@ -4,6 +4,8 @@
 #include "Globals.h"
 #include "Primitive.h"
 
+#include "Bullet/include/btBulletDynamicsCommon.h"
+
 #define MAX_SNAKE 2
 
 struct PhysBody3D;
@@ -24,11 +26,12 @@ public:
 public:
 	int laps = 1;
 
-
+	btHingeConstraint* bridge;
 
 	Cube s;
 	Cube s2;
 	Cube s3;
+	Cube gs;
 
 	Cube c1;
 	Cube c2;
@@ -73,5 +76,11 @@ public:
 
 	PhysBody3D* sensor;
 	PhysBody3D* sensor2;
+	PhysBody3D* sensor3;
+	PhysBody3D* groundSensor;
 	PhysBody3D* cube1;
+
+	bool checkPoint1 = false;
+	bool checkPoint2 = false;
+	bool checkPoint3 = false;
 };

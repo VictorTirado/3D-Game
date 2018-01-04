@@ -5,6 +5,7 @@
 #include "PhysBody3D.h"
 #include "ModulePhysics3D.h"
 #include "Color.h"
+#include "ModulePlayer.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -84,6 +85,12 @@ bool ModuleSceneIntro::Start()
 	c36 = App->physics->AddCubeRotY(15, 3, 30, -153.5, 2.998, 20.5, 0.0f, Sand, 0);
 	c37 = App->physics->AddCubeRotY(15, 3, 15, -140.5, 2.999, 13.5, 0.0f, Sand, 0);
 
+	bridge = App->physics->AddConstraintHinge(*c20.body, *c17.body, c20.size, c17.size, c20.axis, c17.axis, true);
+	//bridge->enableMotor(true);
+	bridge->enableAngularMotor(true, 5, 50);
+	//bridge->setMaxMotorImpulse(50);
+	bridge->setLimit(0, 10);
+
 	//SENSORS
 	s.size = vec3(15, 3, 1);
 	s.SetPos(0, 6, 10);
@@ -99,11 +106,15 @@ bool ModuleSceneIntro::Start()
 
 	s3.size = vec3(15, 3, 1);
 	s3.SetPos(-168.5, 7, 90.5);
-	sensor2 = App->physics->AddBody(s3, 0.0f);
-	sensor2->SetAsSensor(true);
-	sensor2->collision_listeners.add(this);
+	sensor3 = App->physics->AddBody(s3, 0.0f);
+	sensor3->SetAsSensor(true);
+	sensor3->collision_listeners.add(this);
 
-
+	gs.size = vec3(1000, 2, 1000);
+	gs.SetPos(0, 0, 0);
+	groundSensor = App->physics->AddBody(gs, 0.0f);
+	groundSensor->SetAsSensor(true);
+	groundSensor->collision_listeners.add(this);
 
 
 	return ret;
@@ -125,7 +136,6 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.color = Green;
 	p.Render();
 	Cube plane(1000, 0, 1000);
-	plane.color = Green;
 	plane.Render();
 
 	//sensor->GetTransform(&s.transform);
@@ -133,6 +143,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	s.Render();
 	s2.Render();
 	s3.Render();
+	//gs.Render();
 	//MAP
 	c9.Render();
 	c1.Render();
@@ -172,8 +183,6 @@ update_status ModuleSceneIntro::Update(float dt)
 	c36.Render();
 	c37.Render();
 
-
-
 	return UPDATE_CONTINUE;
 }
 
@@ -181,5 +190,30 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	LOG("1/3");
 	laps = laps + 1;
+	if (body1 == sensor || body2 == sensor) {
+		if (checkPoint1 == true && checkPoint2 == true && checkPoint3 == true) {
+			checkPoint1 = true;
+			checkPoint2 = false;
+			checkPoint3 = false;
+		}
+		else if (checkPoint1 == false && checkPoint2 == false && checkPoint3 == false) {
+			checkPoint1 = true;
+		}
+	}
+	if (body1 == sensor2 || body2 == sensor2) {
+		if (checkPoint1 == true && checkPoint2 == false && checkPoint3 == false) {
+			checkPoint2 = true;
+		}
+	}
+	if (body1 == sensor3 || body2 == sensor3) {
+		if (checkPoint1 == true && checkPoint2 == true && checkPoint3 == false) {
+			checkPoint3 = true;
+		}
+	}
+	if (body1 == groundSensor || body2 == groundSensor) {
+		App->player->acceleration = 0;
+		App->player->brake = BRAKE_POWER;
+		App->player->changePos({0,5,0});
+	}
 }
 
