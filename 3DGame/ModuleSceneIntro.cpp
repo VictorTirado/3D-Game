@@ -191,13 +191,12 @@ update_status ModuleSceneIntro::Update(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	LOG("1/3");
-	laps = laps + 1;
 	if (body1 == sensor || body2 == sensor) {
 		if (checkPoint1 == true && checkPoint2 == true && checkPoint3 == true) {
 			checkPoint1 = true;
 			checkPoint2 = false;
 			checkPoint3 = false;
+			laps = laps + 1;
 		}
 		else if (checkPoint1 == false && checkPoint2 == false && checkPoint3 == false) {
 			checkPoint1 = true;
