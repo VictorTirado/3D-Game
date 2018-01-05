@@ -70,6 +70,8 @@ public:
 	Cube c35;
 	Cube c36;
 	Cube c37;
+	Cube c38;
+	Cube c39;
 	
 	Cylinder cyl;
 
