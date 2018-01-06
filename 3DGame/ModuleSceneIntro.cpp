@@ -58,6 +58,8 @@ bool ModuleSceneIntro::Start()
 	c16 = App->physics->AddCubeRotX(15, 3, 20, 20, 4, -30, 0.0f, Sand, 30);
 	c21 = App->physics->AddCubeRotY(30, 3, 30, 10, 8.75, -53, 0.0f, Sand, 0);
 	c22 = App->physics->AddCubeRotX(15, 3, 20, 2.5, 8.75, -35, 0.0f, Sand, -20);
+	c44 = App->physics->AddCube(1, 1, 1, 1.5, 22, -20, 0.0f, Red);
+	c45 = App->physics->AddCube(2, 8, 1, 1.5, 19, -20, 0.0f, Red);
 	c6 = App->physics->AddCube(15, 3, 30, 0, 3.001, 20, 0.0f, Sand);
 	c7 = App->physics->AddCube(15, 3, 30, 0, 3, 50, 0.0f, Sand);
 	c41 = App->physics->AddCube(15, 3, 30, 0, 3, 65, 0.0f, Sand);
@@ -72,14 +74,16 @@ bool ModuleSceneIntro::Start()
 	c23 = App->physics->AddCubeRotY(15, 3, 25, -47.5, 3, 96.5, 0.0f, Sand, 45);
 	c24 = App->physics->AddCubeRotY(15, 3, 50, -71.5, 2.999, 111.5, 0.0f, Sand, 130);
 	c25 = App->physics->AddCubeRotX(15, 3, 20, -85.5, 3, 127.5, 0.0f, Sand,-15);
+	c42 = App->physics->AddCube(1, 1, 1, -85.5, 12, 140, 0.0f, Red);
+	c43 = App->physics->AddCube(2, 8, 1, -85.5, 9, 140, 0.0f, Red);
 	c26 = App->physics->AddCubeRotX(40, 3.0001, 50, -85.5, 3.001, 190.5, 0.0f, Sand, 0);
 	c27 = App->physics->AddCubeRotX(50, 3, 20, -125.5, 3, 205.5, 0.0f, Sand, 0);
 	c28 = App->physics->AddCubeRotY(50, 3, 20, -150.5, 2.999, 190.5, 0.0f, Sand, -45);
 	c29 = App->physics->AddCubeRotY(15, 3, 60, -168.5, 3.002, 150.5, 0.0f, Sand, 0);
 	c30 = App->physics->AddCubeRotY(15, 3, 60, -168.5, 3.001, 90.5, 0.0f, Sand, 0);
-	c31 = App->physics->AddCubeRotY(1, 10, 60, -176.5, 9, 90.5, 0.0f, Black, 0);
-	c32 = App->physics->AddCubeRotY(1, 10, 60, -160.5, 9, 90.5, 0.0f, Black, 0);
-	c33 = App->physics->AddCubeRotY(17, 1, 60, -168.5, 14, 90.5, 0.0f, Black, 0);
+	c31 = App->physics->AddCubeRotY(1, 10, 60, -176.5, 9, 90.5, 0.0f, Gray, 0);
+	c32 = App->physics->AddCubeRotY(1, 10, 60, -160.5, 9, 90.5, 0.0f, Gray, 0);
+	c33 = App->physics->AddCubeRotY(17, 1, 60, -168.5, 14, 90.5, 0.0f, Gray, 0);
 	c34 = App->physics->AddCubeRotY(15, 3, 30, -168.5, 3, 45.5, 0.0f, Sand, 0);
 	c35 = App->physics->AddCubeRotY(15, 3, 15, -153.5, 2.999, 38.5, 0.0f, Sand, 0);
 	c36 = App->physics->AddCubeRotY(15, 3, 30, -153.5, 2.998, 20.5, 0.0f, Sand, 0);
@@ -87,6 +91,7 @@ bool ModuleSceneIntro::Start()
 	c39 = App->physics->AddCubeRotY(15, 3, 30, -138.5, 3.001, -9.5, 0.0f, Sand, 0);
 	c38 = App->physics->AddCubeRotY(140, 3, 10, -67.5, 3, -20, 0.0f, Sand, 0);
 	c40 = App->physics->AddCube(15, 2.5, 2, 0, 6.001, -14, 0.0f, Sand);
+	
 	//bridge = App->physics->AddConstraintHinge(*c20.body, *c17.body, c20.size, c17.size, { c20.size.x, c20.size.y, c20.size.z }, {0,c17.size.y,0}, true);
 	////bridge->enableMotor(true);
 	//bridge->enableAngularMotor(true, 5, 50);

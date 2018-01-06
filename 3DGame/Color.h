@@ -31,4 +31,6 @@ extern Color Blue;
 extern Color Black;
 extern Color White;
 extern Color Brown;
+extern Color Gray;
+extern Color Blue2;
 extern Color Sand;

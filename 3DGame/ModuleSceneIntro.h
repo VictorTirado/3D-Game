@@ -76,6 +76,10 @@ public:
 	Cube c39;
 	Cube c40;
 	Cube c41;
+	Cube c42;
+	Cube c43;
+	Cube c44;
+	Cube c45;
 	
 	Cylinder cyl;
 
