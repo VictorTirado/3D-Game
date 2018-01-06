@@ -60,6 +60,7 @@ bool ModuleSceneIntro::Start()
 	c22 = App->physics->AddCubeRotX(15, 3, 20, 2.5, 8.75, -35, 0.0f, Sand, -20);
 	c6 = App->physics->AddCube(15, 3, 30, 0, 3.001, 20, 0.0f, Sand);
 	c7 = App->physics->AddCube(15, 3, 30, 0, 3, 50, 0.0f, Sand);
+	c41 = App->physics->AddCube(15, 3, 30, 0, 3, 65, 0.0f, Sand);
 	c10 = App->physics->AddCubeRotY(15, 3, 30, 12.5, 3.001, 80, 0.0f, Sand, 45);
 	c11 = App->physics->AddCubeRotY(15, 3, 25, 30, 3, 97.5, 0.0f, Sand, 45);
 	c12 = App->physics->AddCube(15, 3, 30, 36, 3.001, 115.5, 0.0f, Sand);
@@ -68,7 +69,6 @@ bool ModuleSceneIntro::Start()
 	c14 = App->physics->AddCubeRotY(15, 3, 25, -13.5, 2.999, 130.5, 0.0f, Sand, 45);
 	c19 = App->physics->AddCubeRotY(15, 3,25, -30.5, 3, 113.5, 0.0f, Sand, 45);
 	c20 = App->physics->AddCubeRotY(30, 3, 10, -37.5, 3.001, -20, 0.0f, Sand, 0);
-	
 	c23 = App->physics->AddCubeRotY(15, 3, 25, -47.5, 3, 96.5, 0.0f, Sand, 45);
 	c24 = App->physics->AddCubeRotY(15, 3, 50, -71.5, 2.999, 111.5, 0.0f, Sand, 130);
 	c25 = App->physics->AddCubeRotX(15, 3, 20, -85.5, 3, 127.5, 0.0f, Sand,-15);
@@ -86,6 +86,7 @@ bool ModuleSceneIntro::Start()
 	c37 = App->physics->AddCubeRotY(15, 3, 15, -138.5, 2.999, 13, 0.0f, Sand, 0);
 	c39 = App->physics->AddCubeRotY(15, 3, 30, -138.5, 3.001, -9.5, 0.0f, Sand, 0);
 	c38 = App->physics->AddCubeRotY(140, 3, 10, -67.5, 3, -20, 0.0f, Sand, 0);
+	c40 = App->physics->AddCube(15, 2.5, 2, 0, 6.001, -14, 0.0f, Sand);
 	bridge = App->physics->AddConstraintHinge(*c20.body, *c17.body, c20.size, c17.size, c20.axis, c17.axis, true);
 	//bridge->enableMotor(true);
 	bridge->enableAngularMotor(true, 5, 50);
@@ -141,51 +142,44 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	//sensor->GetTransform(&s.transform);
 	//SENSORS
-	s.Render();
+	//s.Render();
 	s2.Render();
 	s3.Render();
 	//gs.Render();
-	//MAP
-	c9.Render();
-	c1.Render();
-	c2.Render();
-	c3.Render();
-	c4.Render();
-	c5.Render();
-	c6.Render();
-	c7.Render();
-	c8.Render();
-	c10.Render();
-	c11.Render();
-	c12.Render();
-	c13.Render();
-	c14.Render();
-	c15.Render();
-	c16.Render();
-	c17.Render();
-	c18.Render();
-	c19.Render();
-	c20.Render();
-	c21.Render();
-	c22.Render();
-	c23.Render();
-	c24.Render();
-	c25.Render();
-	c26.Render();
-	c27.Render();
-	c28.Render();
-	c29.Render();
-	c30.Render();
-	c31.Render();
-	c32.Render();
-	c33.Render();
-	c34.Render();
-	c35.Render();
-	c36.Render();
-	c37.Render();
-	c38.Render();
-	c39.Render();
 
+	p2List_item<Cube>* cube = cubes.getFirst();
+
+	while (cube != nullptr) {
+		cube->data.Render();
+
+		cube = cube->next;
+	}
+	p2List_item<Cube>* cube1 = cubesRotX.getFirst();
+
+	while (cube1 != nullptr) {
+		cube1->data.Render();
+
+		cube1 = cube1->next;
+	}
+	p2List_item<Cube>* cube2 = cubesRotX.getFirst();
+
+	while (cube != nullptr) {
+		cube2->data.Render();
+
+		cube2 = cube2->next;
+	}
+	if (laps == 1)
+	{
+		lap1_time = App->player->startup_time.Read() / 1000;
+	}
+	if (laps == 2)
+	{
+		lap2_time = (App->player->startup_time.Read() / 1000) - lap1_time;
+	}
+	if (laps == 3)
+	{
+		lap3_time = (App->player->startup_time.Read() / 1000) - lap2_time - lap1_time;
+	}
 	return UPDATE_CONTINUE;
 }
 
@@ -196,6 +190,8 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 			checkPoint1 = true;
 			checkPoint2 = false;
 			checkPoint3 = false;
+			
+			
 			laps = laps + 1;
 		}
 		else if (checkPoint1 == false && checkPoint2 == false && checkPoint3 == false) {

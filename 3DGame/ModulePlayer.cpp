@@ -23,7 +23,7 @@ bool ModulePlayer::Start()
 	// Car properties ----------------------------------------
 	car.chassis_size.Set(2, 2, 4);
 	car.chassis_offset.Set(0, 1.5, 0);
-	car.mass = 500.0f;
+	car.mass = 1000.0f;
 	car.suspensionStiffness = 15.88f;
 	car.suspensionCompression = 0.83f;
 	car.suspensionDamping = 0.88f;
@@ -152,14 +152,13 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Brake(brake);
 
 	vehicle->Render();
-	float seconds_since_startup = startup_time.Read();
-	char title[80];
-	sprintf_s(title, "%.1f Km/h     %i/3 facings Time since startup: %3.f", vehicle->GetKmh(), App->scene_intro->laps, seconds_since_startup);
+	float seconds_since_startup = startup_time.Read()/1000;
+	char title[180];
+	sprintf_s(title, "%.1f Km/h     %i/3 facings Time since startup: %.f s First lap time: %.f s Second lap time: %.f s Third lap time: %.f s", vehicle->GetKmh(), App->scene_intro->laps, seconds_since_startup, App->scene_intro->lap1_time,App->scene_intro->lap2_time, App->scene_intro->lap3_time);
 	App->window->SetTitle(title);
 	vehicle->GetTransform(&matrix);
 	position = matrix.translation();
 	speed = vehicle->GetKmh();
-
 	return UPDATE_CONTINUE;
 }
 

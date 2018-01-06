@@ -3,6 +3,7 @@
 #include "ModulePhysics3D.h"
 #include "PhysBody3D.h"
 #include "PhysVehicle3D.h"
+#include "ModuleSceneIntro.h"
 #include "Primitive.h"
 
 #ifdef _DEBUG
@@ -339,8 +340,8 @@ Cube ModulePhysics3D::AddCube(float x, float y, float z, float PosX, float PosY,
 	c.SetPos(PosX, PosY, PosZ);
 	c.color = color;
 	float mass2 = mass;
-
 	c.body = AddBody(c,mass2);
+	App->scene_intro->cubes.add(c);
 	return c;
 }
 Cube ModulePhysics3D::AddCubeRotY(float x, float y, float z, float PosX, float PosY, float PosZ, float mass, Color color, int angle)
@@ -352,8 +353,10 @@ Cube ModulePhysics3D::AddCubeRotY(float x, float y, float z, float PosX, float P
 	c.SetPos(PosX, PosY, PosZ);
 	c.color = color;
 	float mass2 = mass;
+
 	c.SetRotation(angle, vec3(0, 1, 0));
 	c.body = AddBody(c, mass2);
+	App->scene_intro->cubes.add(c);
 	return c;
 }
 
@@ -366,8 +369,10 @@ Cube ModulePhysics3D::AddCubeRotX(float x, float y, float z, float PosX, float P
 	c.SetPos(PosX, PosY, PosZ);
 	c.color = color;
 	float mass2 = mass;
+	
 	c.SetRotation(angle, vec3(1, 0, 0));
 	c.body = AddBody(c, mass2);
+	App->scene_intro->cubes.add(c);
 	return c;
 }
 

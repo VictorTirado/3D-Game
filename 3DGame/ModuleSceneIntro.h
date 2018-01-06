@@ -27,7 +27,9 @@ public:
 	int laps = 1;
 
 	btHingeConstraint* bridge;
-
+	p2List<Cube> cubes;
+	p2List<Cube> cubesRotY;
+	p2List<Cube> cubesRotX;
 	Cube s;
 	Cube s2;
 	Cube s3;
@@ -72,6 +74,8 @@ public:
 	Cube c37;
 	Cube c38;
 	Cube c39;
+	Cube c40;
+	Cube c41;
 	
 	Cylinder cyl;
 
@@ -85,6 +89,9 @@ public:
 	bool checkPoint1 = false;
 	bool checkPoint2 = false;
 	bool checkPoint3 = false;
+	float lap1_time = 0.0f;
+	float lap2_time = 0.0f;
+	float lap3_time = 0.0f;
 
 	
 };
