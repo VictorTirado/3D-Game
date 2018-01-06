@@ -100,6 +100,8 @@ bool ModulePlayer::Start()
 	vehicle->SetPos(0,3,0);
 	vehicle->GetTransform(&originalMatrix);
 	App->camera->Follow(vehicle, 10, 10, 1.f);
+
+	App->audio->LoadFx("Audio/engine.wav");
 	
 	return true;
 }
@@ -121,6 +123,7 @@ update_status ModulePlayer::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
 			acceleration = MAX_ACCELERATION;
+			App->audio->PlayFx(1,1);
 		}
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
@@ -159,7 +162,7 @@ update_status ModulePlayer::Update(float dt)
 	position = matrix.translation();
 	speed = vehicle->GetKmh();
 
-	if (seconds_since_startup > 5.0f && App->scene_intro->laps<=3 && newWalls == false) {
+	if (seconds_since_startup > maxTime && App->scene_intro->laps<=3 && newWalls == false) {
 		wall1 = App->physics->AddCube(1500, 100, 1, 0, 0, -130, 0.0f, Red);
 		wall2 = App->physics->AddCube(1500, 100, 1, 0, 0, 390, 0.0f, Red);
 		wall3 = App->physics->AddCube(1, 100, 1500, 90, 0, -140, 0.0f, Red);

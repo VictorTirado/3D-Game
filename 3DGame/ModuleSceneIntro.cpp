@@ -144,6 +144,7 @@ bool ModuleSceneIntro::Start()
 	groundSensor->SetAsSensor(true);
 	groundSensor->collision_listeners.add(this);
 
+	App->audio->PlayMusic("Audio/Music.ogg");
 
 	return ret;
 }
