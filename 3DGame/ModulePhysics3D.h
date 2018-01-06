@@ -35,7 +35,7 @@ public:
 	Cube AddCubeRotY(float x, float y, float z, float PosX, float posY, float PosZ, float mass, Color color,int angle);
 	Cube AddCubeRotX(float x, float y, float z, float PosX, float posY, float PosZ, float mass, Color color, int angle);
 	Cylinder AddCylinder(float radius, float height, float PosX, float posY, float PosZ, float mass,Color color);
-	void AddConstraintP2P(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB);
+	btTypedConstraint* AddConstraintP2P(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB);
 	btHingeConstraint* AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
 
 private:

@@ -26,7 +26,8 @@ public:
 public:
 	int laps = 1;
 
-	btHingeConstraint* bridge;
+	btHingeConstraint* elix1;
+	btHingeConstraint* elix2;
 	p2List<Cube> cubes;
 	p2List<Cube> cubesRotY;
 	p2List<Cube> cubesRotX;
