@@ -87,11 +87,11 @@ bool ModuleSceneIntro::Start()
 	c39 = App->physics->AddCubeRotY(15, 3, 30, -138.5, 3.001, -9.5, 0.0f, Sand, 0);
 	c38 = App->physics->AddCubeRotY(140, 3, 10, -67.5, 3, -20, 0.0f, Sand, 0);
 	c40 = App->physics->AddCube(15, 2.5, 2, 0, 6.001, -14, 0.0f, Sand);
-	bridge = App->physics->AddConstraintHinge(*c20.body, *c17.body, c20.size, c17.size, c20.axis, c17.axis, true);
-	//bridge->enableMotor(true);
-	bridge->enableAngularMotor(true, 5, 50);
-	//bridge->setMaxMotorImpulse(50);
-	bridge->setLimit(0, 10);
+	//bridge = App->physics->AddConstraintHinge(*c20.body, *c17.body, c20.size, c17.size, { c20.size.x, c20.size.y, c20.size.z }, {0,c17.size.y,0}, true);
+	////bridge->enableMotor(true);
+	//bridge->enableAngularMotor(true, 5, 50);
+	////bridge->setMaxMotorImpulse(50);
+	//bridge->setLimit(0, 10);
 
 	//SENSORS
 	s.size = vec3(15, 3, 1);

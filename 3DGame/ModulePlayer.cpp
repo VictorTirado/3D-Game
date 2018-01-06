@@ -169,6 +169,12 @@ void ModulePlayer::changePos(vec3 pos) {
 	newTransform.M[12] = pos.x;
 	newTransform.M[13] = pos.y;
 	newTransform.M[14] = pos.z;
+	if (App->scene_intro->checkPoint2 == true && App->scene_intro->checkPoint3 == false) {
+		newTransform.rotate(-135 , { 0,1,0 });
+	}
+	if (App->scene_intro->checkPoint3 == true) {
+		newTransform.rotate(180, { 0,1,0 });
+	}
 	vehicle->SetTransform(&newTransform);
 }
 
