@@ -81,6 +81,13 @@ public:
 	Cube c43;
 	Cube c44;
 	Cube c45;
+	Cube c46;
+	Cube c47;
+	Cube c48;
+	Cube c49;
+	Cube c50;
+	Cube c51;
+	Cube c52;
 	
 	Cylinder cyl;
 
