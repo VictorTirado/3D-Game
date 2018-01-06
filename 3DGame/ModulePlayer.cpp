@@ -117,44 +117,43 @@ update_status ModulePlayer::Update(float dt)
 {
 
 	turn = acceleration = brake = 0.0f;
-
-	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-	{
-		acceleration = MAX_ACCELERATION;
-	}
-
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-	{
-		if (turn < TURN_DEGREES) {
-			turn += TURN_DEGREES;
+	float seconds_since_startup = startup_time.Read() / 1000;
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+		{
+			acceleration = MAX_ACCELERATION;
 		}
-	}
 
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-	{
-		if (turn > -TURN_DEGREES) {
-			turn -= TURN_DEGREES;
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		{
+			if (turn < TURN_DEGREES) {
+				turn += TURN_DEGREES;
+			}
 		}
-	}
 
-	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-	{
-		acceleration = -MAX_ACCELERATION;
-	}
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		{
+			if (turn > -TURN_DEGREES) {
+				turn -= TURN_DEGREES;
+			}
+		}
+
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			acceleration = -MAX_ACCELERATION;
+		}
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
-	{
-		brake = BRAKE_POWER;
-	}
+		{
+			brake = BRAKE_POWER;
+		}
 
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
 
 	vehicle->Render();
-	float seconds_since_startup = startup_time.Read()/1000;
 	char title[180];
-	sprintf_s(title, "%.1f Km/h     %i/3 facings Time since startup: %.f s First lap time: %.f s Second lap time: %.f s Third lap time: %.f s", vehicle->GetKmh(), App->scene_intro->laps, seconds_since_startup, App->scene_intro->lap1_time,App->scene_intro->lap2_time, App->scene_intro->lap3_time);
+	sprintf_s(title, "%.1fKm/h     Laps:%i/3     Time:%.f/%.fs     First lap time:%.fs     Second lap time:%.fs     Third lap time:%.fs", vehicle->GetKmh(), App->scene_intro->laps, seconds_since_startup, maxTime, App->scene_intro->lap1_time, App->scene_intro->lap2_time, App->scene_intro->lap3_time);
 	App->window->SetTitle(title);
 	vehicle->GetTransform(&matrix);
 	position = matrix.translation();

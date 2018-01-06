@@ -31,5 +31,6 @@ public:
 	float speed;
 	Timer startup_time;
 	float total_time;
+	float maxTime = 240.0f;
 	void changePos(vec3 pos);
 };
