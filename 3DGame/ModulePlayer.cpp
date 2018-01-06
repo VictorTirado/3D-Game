@@ -158,6 +158,32 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->GetTransform(&matrix);
 	position = matrix.translation();
 	speed = vehicle->GetKmh();
+
+	if (seconds_since_startup > 5.0f && App->scene_intro->laps<=3 && newWalls == false) {
+		wall1 = App->physics->AddCube(1500, 100, 1, 0, 0, -130, 0.0f, Red);
+		wall2 = App->physics->AddCube(1500, 100, 1, 0, 0, 390, 0.0f, Red);
+		wall3 = App->physics->AddCube(1, 100, 1500, 90, 0, -140, 0.0f, Red);
+		wall4 = App->physics->AddCube(1, 100, 1500, -390, 0, -140, 0.0f, Red);
+		wall5 = App->physics->AddCube(1500, 100, 1500, -390, 90, -140, 0.0f, Red);
+		newWalls = true;
+	}
+
+	if (App->scene_intro->laps>3 && seconds_since_startup < maxTime && newWalls == false) {
+		wall1 = App->physics->AddCube(1500, 100, 1, 0, 0, -130, 0.0f, Green);
+		wall2 = App->physics->AddCube(1500, 100, 1, 0, 0, 390, 0.0f, Green);
+		wall3 = App->physics->AddCube(1, 100, 1500, 90, 0, -140, 0.0f, Green);
+		wall4 = App->physics->AddCube(1, 100, 1500, -390, 0, -140, 0.0f, Green);
+		wall5 = App->physics->AddCube(1500, 100, 1500, -390, 90, -140, 0.0f, Green);
+		newWalls = true;
+	}
+	if (newWalls == true) {
+		wall1.Render();
+		wall2.Render();
+		wall3.Render();
+		wall4.Render();
+		wall5.Render();
+	}
+
 	return UPDATE_CONTINUE;
 }
 

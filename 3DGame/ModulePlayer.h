@@ -33,4 +33,10 @@ public:
 	float total_time;
 	float maxTime = 240.0f;
 	void changePos(vec3 pos);
+	Cube wall1;
+	Cube wall2;
+	Cube wall3;
+	Cube wall4;
+	Cube wall5;
+	bool newWalls = false;
 };

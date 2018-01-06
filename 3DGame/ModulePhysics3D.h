@@ -31,6 +31,7 @@ public:
 	PhysBody3D* AddBody(const Cube& cube, float mass = 1.0f);
 	PhysBody3D* AddBody(const Cylinder& cylinder, float mass = 1.0f);
 	PhysVehicle3D* AddVehicle(const VehicleInfo& info);
+	Cube AddCubePlayerModule(float x, float y, float z, float PosX, float posY, float PosZ, float mass, Color color);
 	Cube AddCube(float x, float y, float z, float PosX, float posY, float PosZ, float mass,Color color);
 	Cube AddCubeRotY(float x, float y, float z, float PosX, float posY, float PosZ, float mass, Color color,int angle);
 	Cube AddCubeRotX(float x, float y, float z, float PosX, float posY, float PosZ, float mass, Color color, int angle);

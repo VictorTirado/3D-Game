@@ -172,6 +172,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	//s2.Render();
 	//s3.Render();
 	//gs.Render();
+
 	p2List_item<Cube>* cube = cubes.getFirst();
 
 	while (cube != nullptr) {
